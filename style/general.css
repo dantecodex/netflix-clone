@@ -1,0 +1,27 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+@font-face {
+    font-family: "netflix";
+    src: url(../fonts/Netflix-Light.otf) format('opentype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "netflix";
+    src: url(../fonts/Netflix-Medium.otf) format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "netflix";
+    src: url(../fonts/Netflix-Bold.otf) format('opentype');
+    font-weight: bold;
+}
+
+.test {
+    font-family: 'Bootstrap-icons';
+}
+
+body {
+    font-family: netflix;
+}

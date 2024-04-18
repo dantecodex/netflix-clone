@@ -1,0 +1,14 @@
+#intro {
+    /* height: 100vh; */
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-image: url(../images/landing-page/hero-image.jpg); */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),url(../images/landing-page/hero-image.jpg);
+}
+
+
+@media (max-width: 575px) {
+    .navbar-brand img {
+        height: 30px;
+    }
+}
