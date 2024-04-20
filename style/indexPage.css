@@ -2,13 +2,133 @@
     /* height: 100vh; */
     background-repeat: no-repeat;
     background-position: center;
+
     /* background-image: url(../images/landing-page/hero-image.jpg); */
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),url(../images/landing-page/hero-image.jpg);
 }
 
+#heroElement {
+    /* margin-top: 12rem; */
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+#inputEmail {
+    background-color: rgba(0, 0, 0, 0.55);
+    border-color: gray
+}
+#emailBtn {
+    background-color: #e50914;
+    /* padding: 8px; */
+}
+
+.tvimage {
+    position: relative;
+    width: 100%;
+}
+
+.box2-image {
+    position: relative;
+}
+
+#download-container {
+position: absolute;
+top: 17.5rem;
+left: 5rem;
+}
+
+#videointv {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+    width: 23rem;
+    z-index: -1;
+}
+
+.box3-video {
+    position: relative;
+}
+/* .box3-video video {
+    width: 50%;
+} */
+#box3-videotv {
+    position: absolute;
+    top: 2rem;
+    left: 5.9rem;
+    width: 21.2rem;
+    height: 13rem;
+    z-index: -1;
+    
+}
+
+.accordion-button.collapsed{
+    background-color: #2d2d2d;
+    color: white;
+    padding: 2rem;
+    font-size: 1.2rem;
+    &:hover {
+        background-color: #414141;
+    }
+  }
+  .accordion-body {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 2rem;
+    font-size: 1.2rem;
+  }
+  .accordion-button.collapsed::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  }
+  .accordion-button:focus,.accordion-button:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+#accordionExample {
+    color: white;
+}
+
+#bottom-heroElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+
 
 @media (max-width: 575px) {
+    #intro {
+        height: fit-content !important;
+        background-size: cover;
+    }
+    #heroElement {
+        display: block;
+    }
     .navbar-brand img {
         height: 30px;
+    }
+    #emailBtn {
+        margin-top: 20px;
+    }
+    #box {
+        text-align: center;
+    }
+    #box img {
+        text-align: center;
+        width: 100%;
+    }
+    #videointv {
+        position: absolute;
+        top: 5rem;
+        left: 4rem;
+        width: 24rem;
+        z-index: -1;
+    }
+    #download-container {
+        top: 16rem;
+        left: 5.5rem;
+        width: 21.5rem;
     }
 }
