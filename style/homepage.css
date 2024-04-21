@@ -1,14 +1,42 @@
+html {
+    scroll-behavior: smooth;
+}
 body {
     background-color: #181818;
     font-weight: normal;
 }
 .join-Now {
-    
-    /* --bs-btn-padding-x: 5 rem; */
     &:active {
         opacity: 0.8;
     }
 }
+
+  .slick-slide {
+      margin: 0 20px;
+  }
+
+
+ .slick-slide img {
+    
+    
+ }
+.card img{
+    width: 220px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 575px) {
