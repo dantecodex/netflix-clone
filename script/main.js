@@ -63,8 +63,6 @@ function printMoviePoster(movies, location) {
 
 // Fetching Movie Data from API -------------->>>>>>>
 
-
-
 async function fetchMovies(category) {
     const options = {
         method: 'GET',
@@ -73,7 +71,7 @@ async function fetchMovies(category) {
             Authorization: `Bearer ${accessToken}`
         }
     };
-      
+
     try {
         const response = await fetch(`https://api.themoviedb.org/3/${category}`, options);
         if (!response.ok) {
@@ -86,10 +84,6 @@ async function fetchMovies(category) {
         return [];
     }
 }
-
-
-
-
 
 
 // Slider --------------------------------->>>>>>>
@@ -126,9 +120,6 @@ function applySlider(locationClassName) {
                         slidesToScroll: 1
                     }
                 }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
             ]
         });
     });
