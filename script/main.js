@@ -1,29 +1,28 @@
 const apiKey = "1edd9b2dcc777867c2fe3f5da9049109";
 const posterUrl = "https://media.themoviedb.org/t/p/w220_and_h330_face/";
 
-trendingMovies();
-topMovies();
+
+getMovies();
 // newReleaseMovies();
 // comedyMovies();
 // actionMovies();
 // familyMovies();
 
-
-
-async function trendingMovies() {
-    const location = document.querySelector(".Popular-Movies");
-    let trending = await getTrendingMovies();
+async function getMovies() {
+    let location;
+    location = document.querySelector(".Popular-Movies");
+    let trending = await fetchMovies("popular");
     printMoviePoster(trending, location);
-}
 
-async function topMovies() {
-    const location = document.querySelector(".Top-Movies");
-    let top = await getTopMovies();
+    location = document.querySelector(".Top-Movies");
+    let top = await fetchMovies("top_rated");
     printMoviePoster(top, location);
+
+    location = document.querySelector(".New-Movies");
+    let newMovie = await fetchMovies("now_playing");
+    printMoviePoster(newMovie, location);
 }
 
-
-const popularMovie = document.querySelector(".Popular-Movies");
 
 
 
@@ -46,16 +45,12 @@ function printMoviePoster(movies, location) {
 }
 
 
-
-
-
-
 // Fetching Movie Data from API -------------->>>>>>>
 
 
-async function getTrendingMovies() {
+async function fetchMovies(category) {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`);
         const data = await response.json();
         return data.results;
     }
@@ -63,25 +58,9 @@ async function getTrendingMovies() {
         console.error(error);
     }
 }
-
-async function getTopMovies() {
-    try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
-        const data = await response.json();
-        return data.results;
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
-
 
 
 // Slider --------------------------------->>>>>>>
-
-
-
 
 function applySlider(locationClassName) {
     $(document).ready(function () {
