@@ -1,26 +1,23 @@
 html {
     scroll-behavior: smooth;
 }
+
 body {
     background-color: #181818;
     font-weight: normal;
 }
+
 .join-Now {
     &:active {
         opacity: 0.8;
     }
 }
 
-  .slick-slide {
-      margin: 0 20px;
-  }
+.slick-slide {
+    margin: 0 20px;
+}
 
-
- .slick-slide img {
-    
-    
- }
-.card img{
+.card img {
     width: 220px;
 }
 
@@ -41,6 +38,9 @@ body {
 
 @media (max-width: 575px) {
     #nav-tagline {
+        display: none;
+    }
+    .slide-arrow {
         display: none;
     }
 }

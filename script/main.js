@@ -37,6 +37,10 @@ async function getMovies() {
     location = document.querySelector(".War-Movies");
     let warMovie = await fetchMovies("discover/movie?page=3&with_genres=10752");
     printMoviePoster(warMovie, location);
+
+    location = document.querySelector(".Thriller-Movies");
+    let thrillerMovie = await fetchMovies("discover/movie?page=5&with_genres=53");
+    printMoviePoster(thrillerMovie, location);
 }
 
 
@@ -48,7 +52,7 @@ function printMoviePoster(movies, location) {
     let movieCardData = '';
     for (const movie of movies) {
         movieCardData += `
-                <div id="${movie.id}" class="card bg-transparent text-light" style="width: 10rem;">
+                <div id="${movie.id}" class="card bg-transparent text-light" >
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}" class="card-img-top mx-auto" alt="...">
                 <div class="card-body ">
                     <p class="card-title text-center m-0">${movie.title}</p>
@@ -95,13 +99,13 @@ function applySlider(locationClassName) {
             infinite: true,
             speed: 300,
             slidesToShow: 5,
-            slidesToScroll: 4,
+            slidesToScroll: 3,
             responsive: [
                 {
                     breakpoint: 1024,
                     settings: {
                         slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToScroll: 2,
                         infinite: true,
                         dots: false
                     }
