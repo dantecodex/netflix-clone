@@ -3,47 +3,59 @@ const posterUrl = "https://media.themoviedb.org/t/p/w220_and_h330_face/";
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZWRkOWIyZGNjNzc3ODY3YzJmZTNmNWRhOTA0OTEwOSIsInN1YiI6IjU5N2RhMjhlYzNhMzY4NTNmNjAxM2FiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mdya7liBiNI11VciUGsWMwgeXR_9Bgfsh9RWAnPuMaI";
 
 
-getMovies();
-// comedyMovies();
-// actionMovies();
-// familyMovies();
+loadMovies();
 
-async function getMovies() {
+function loadMovies() {
     let location;
+
     location = document.querySelector(".Popular-Movies");
-    let trending = await fetchMovies("movie/popular");
-    printMoviePoster(trending, location);
+    fetchAndPrintMovies("movie/popular", location);
 
     location = document.querySelector(".Top-Movies");
-    let top = await fetchMovies("movie/top_rated");
-    printMoviePoster(top, location);
+    fetchAndPrintMovies("movie/top_rated", location);
 
     location = document.querySelector(".Indian-Movies");
-    let indianMovie = await fetchMovies("movie/now_playing?page=2&region=in");
-    printMoviePoster(indianMovie, location);
+    fetchAndPrintMovies("movie/now_playing?page=2&region=in", location);
 
     location = document.querySelector(".Comedy-Movies");
-    let comedyMovie = await fetchMovies("discover/movie?page=2&with_genres=35");
-    printMoviePoster(comedyMovie, location);
+    fetchAndPrintMovies("discover/movie?page=2&with_genres=35", location);
 
     location = document.querySelector(".sci-fi-Movies");
-    let scifiMovie = await fetchMovies("discover/movie?with_genres=14%2C878");
-    printMoviePoster(scifiMovie, location);
+    fetchAndPrintMovies("discover/movie?with_genres=14%2C878", location);
 
     location = document.querySelector(".Family-Movies");
-    let familyMovie = await fetchMovies("discover/movie?page=3&with_genres=10751");
-    printMoviePoster(familyMovie, location);
+    fetchAndPrintMovies("discover/movie?page=3&with_genres=10751", location);
 
     location = document.querySelector(".War-Movies");
-    let warMovie = await fetchMovies("discover/movie?page=3&with_genres=10752");
-    printMoviePoster(warMovie, location);
+    fetchAndPrintMovies("discover/movie?page=3&with_genres=10752", location);
 
     location = document.querySelector(".Thriller-Movies");
-    let thrillerMovie = await fetchMovies("discover/movie?page=5&with_genres=53");
-    printMoviePoster(thrillerMovie, location);
+    fetchAndPrintMovies("discover/movie?page=5&with_genres=53", location);
 }
 
+// Fetching Movie Data from API -------------->>>>>>>
 
+async function fetchAndPrintMovies(category, location) {
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
+
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/${category}`, options);
+        if (!response.ok) {
+            throw new Error('Failed to fetch movies');
+        }
+        const data = await response.json();
+        printMoviePoster(data.results, location);
+    } catch (error) {
+        console.error('Error fetching movies:', error);
+        return [];
+    }
+}
 
 
 // Printing Movies ------------>>>>>>>>>
@@ -62,31 +74,6 @@ function printMoviePoster(movies, location) {
     }
     location.innerHTML = movieCardData;
     applySlider(location.className);
-}
-
-
-// Fetching Movie Data from API -------------->>>>>>>
-
-async function fetchMovies(category) {
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${accessToken}`
-        }
-    };
-
-    try {
-        const response = await fetch(`https://api.themoviedb.org/3/${category}`, options);
-        if (!response.ok) {
-            throw new Error('Failed to fetch movies');
-        }
-        const data = await response.json();
-        return data.results;
-    } catch (error) {
-        console.error('Error fetching movies:', error);
-        return [];
-    }
 }
 
 
