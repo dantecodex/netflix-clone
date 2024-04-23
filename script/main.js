@@ -1,9 +1,19 @@
 const apiKey = "1edd9b2dcc777867c2fe3f5da9049109";
-const posterUrl = "https://media.themoviedb.org/t/p/w220_and_h330_face/";
+const posterUrl = "https://image.tmdb.org/t/p/w500/";
 const accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZWRkOWIyZGNjNzc3ODY3YzJmZTNmNWRhOTA0OTEwOSIsInN1YiI6IjU5N2RhMjhlYzNhMzY4NTNmNjAxM2FiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mdya7liBiNI11VciUGsWMwgeXR_9Bgfsh9RWAnPuMaI";
 
+localStorage.setItem("accessToken", JSON.stringify(accessToken));
 
 loadMovies();
+
+setTimeout(() => {
+    document.querySelectorAll(".card").forEach(movie => {
+        movie.addEventListener("click", event => {
+            document.location.href = 'moviepage.html';
+            localStorage.setItem("movie_ID", JSON.stringify(event.currentTarget.id));
+        });
+    });
+}, 100);
 
 function loadMovies() {
     let location;
@@ -31,6 +41,7 @@ function loadMovies() {
 
     location = document.querySelector(".Thriller-Movies");
     fetchAndPrintMovies("discover/movie?page=5&with_genres=53", location);
+
 }
 
 // Fetching Movie Data from API -------------->>>>>>>
@@ -65,7 +76,7 @@ function printMoviePoster(movies, location) {
     for (const movie of movies) {
         movieCardData += `
                 <div id="${movie.id}" class="card bg-transparent text-light" >
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}" class="card-img-top mx-auto" alt="...">
+                <img src="${posterUrl}${movie.poster_path}" class="card-img-top mx-auto" alt="...">
                 <div class="card-body ">
                     <p class="card-title text-center m-0">${movie.title}</p>
                 </div>
@@ -77,13 +88,13 @@ function printMoviePoster(movies, location) {
 }
 
 
-// Slider --------------------------------->>>>>>>
+// Slick Slider --------------------------------->>>>>>>
 
 function applySlider(locationClassName) {
     $(document).ready(function () {
         $(`.${locationClassName}`).slick({
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 300,
             slidesToShow: 5,
             slidesToScroll: 3,

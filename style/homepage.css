@@ -1,6 +1,4 @@
-html {
-    scroll-behavior: smooth;
-}
+
 
 body {
     background-color: #181818;
@@ -15,6 +13,10 @@ body {
 
 .slick-slide {
     margin: 0 20px;
+}
+
+.card {
+    cursor: pointer;
 }
 
 .card img {
@@ -71,10 +73,6 @@ body {
 
 @media (max-width: 575px) {
     #nav-tagline {
-        display: none;
-    }
-
-    .slide-arrow {
         display: none;
     }
 
