@@ -6,14 +6,14 @@ localStorage.setItem("accessToken", JSON.stringify(accessToken));
 
 loadMovies();
 
-setTimeout(() => {
+function loadMoviePage() {
     document.querySelectorAll(".card").forEach(movie => {
         movie.addEventListener("click", event => {
             document.location.href = 'moviepage.html';
             localStorage.setItem("movie_ID", JSON.stringify(event.currentTarget.id));
         });
     });
-}, 100);
+}
 
 function loadMovies() {
     let location;
@@ -85,6 +85,7 @@ function printMoviePoster(movies, location) {
     }
     location.innerHTML = movieCardData;
     applySlider(location.className);
+    loadMoviePage();
 }
 
 

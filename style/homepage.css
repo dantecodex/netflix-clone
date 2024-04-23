@@ -1,5 +1,3 @@
-
-
 body {
     background-color: #181818;
     font-weight: normal;
@@ -23,14 +21,15 @@ body {
     width: 220px;
 }
 
- .blurredBackgroundabove {
+.blurredBackgroundabove {
     position: relative;
-    filter: blur(10px); 
-} 
+    filter: blur(10px);
+}
 
 .blurredBackgroundbelow {
     position: relative;
-    filter: blur(5px); 
+    filter: blur(5px);
+
     &::after {
         content: '';
         position: absolute;
@@ -47,8 +46,9 @@ body {
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background: linear-gradient(180deg, transparent 0, #181818);
+
     &::before {
         content: "";
         position: absolute;

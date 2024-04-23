@@ -53,13 +53,22 @@ body {
     box-shadow: 8px 5px 16px 0 rgba(0, 0, 0, .37);
 }
 
-.detail-title,
-.upcoming-title {
+.detail-title {
     color: #a3a3a3;
     line-height: 0;
     margin-bottom: 0.7rem;
 }
 
+.upcoming-title {
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.upcoming-title-data {
+    color: #a3a3a3;
+    font-size: 0.9rem;
+
+}
 
 .slick-slide {
     margin: 0 10px;
@@ -69,11 +78,13 @@ body {
     #nav-tagline {
         display: none;
     }
+
     .header-image {
         &::after {
             position: relative;
         }
     }
+
     .header-logo {
         position: relative;
         left: 0;
