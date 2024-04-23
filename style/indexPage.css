@@ -121,14 +121,22 @@ left: 5rem;
     }
     #videointv {
         position: absolute;
-        top: 5rem;
-        left: 4rem;
-        width: 24rem;
+        top: 0;
+        left: 3.5rem;
+        width: 18rem;
         z-index: -1;
     }
     #download-container {
-        top: 16rem;
-        left: 5.5rem;
-        width: 21.5rem;
+        top: 15rem;
+        left: 3.5rem;
+        width: 18.5rem;
+    }
+    #box3-videotv {
+        position: absolute;
+        top: 0rem;
+        left: 4.9rem;
+        width: 16rem;
+        height: 13rem;
+        z-index: -1;
     }
 }

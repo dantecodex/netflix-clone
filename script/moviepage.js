@@ -12,7 +12,8 @@ getMovieDetails(movieId);
 
 function printMovieDetails(data) {
     const movieBackground = document.querySelector(".background-image");
-    const movieDetails = document.querySelector(".movie-details");
+    const movieLogo = document.querySelector(".movie-header-poster");
+    const movieDetails = document.querySelector(".rest-movie-details");
     const videoTitle = document.querySelector(".video-title");
     const videoSlider = document.querySelector(".video-slider");
     const genre = document.querySelector(".genres");
@@ -23,13 +24,15 @@ function printMovieDetails(data) {
 
 
     movieBackground.innerHTML = `
-    <img src="${imageURL}w1280/${data.backdrop_path}" alt="" srcset="">
-    `;
+        <img src="${imageURL}w1280/${data.backdrop_path}" alt="" srcset="" onerror="this.onerror=null;this.src='images/fallback_image.png';">
+        `;
 
+    if (data.images.logos.length > 0) {
+        movieLogo.innerHTML = `
+        <img src="${imageURL}w500${data.images.logos[0].file_path}" alt="" width:100%>
+        `;
+    }
     movieDetails.innerHTML = `
-    <div class="container m-md-0 ms-0 mt-3 w-md-50 w-75">
-    <img src="${imageURL}w500${data.images.logos[0].file_path}" alt="" width:100%>
-    </div>
                     <div class="ms-md-4 ms-2 fw-light mt-4">
                         <p class="fs-4 mt-md-5">${data.title}</p>
                         <div class="d-flex column-gap-3" style="font-size: 0.88rem; color: #a3a3a3;">
@@ -48,20 +51,22 @@ function printMovieDetails(data) {
     <p class="video-titile">${data.title}</p>
     `;
 
-    let videoCard = '';
-    for (const video of data.videos.results) {
-        if (video[`type`] == 'Trailer' || video[`type`] == 'Teaser') {
-            videoCard += `
-        <div class="">
-        <div class="embed-responsive ratio ratio-16x9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video.key}"></iframe>
-        </div>
-        </div>
-        `;
+    if (data.videos.results.length > 0) {
+        let videoCard = '';
+        for (const video of data.videos.results) {
+            if (video[`type`] == 'Trailer' || video[`type`] == 'Teaser') {
+                videoCard += `
+            <div class="">
+            <div class="embed-responsive ratio ratio-16x9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video.key}"></iframe>
+            </div>
+            </div>
+            `;
+            }
         }
+        videoSlider.innerHTML = videoCard;
+        applySlider();
     }
-    videoSlider.innerHTML = videoCard;
-    applySlider();
 
 
     for (const gen of data.genres) {
