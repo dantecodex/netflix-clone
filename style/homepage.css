@@ -89,4 +89,10 @@ body {
             /* background-color: purple; */
         }
     }
+
+    .movie-error {
+        position: relative !important;
+        width: 100% !important;
+        
+    }
 }
